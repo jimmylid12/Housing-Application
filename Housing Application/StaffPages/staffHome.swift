@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  staffHome.swift
 //  Housing Application
 //
 //  Created by James Liddle on 19/06/2022.
@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct staffHome: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+
+        Text("Staff Home Page")
+ 
     }
+
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct staffHome_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        staffHome()
     }
 }
