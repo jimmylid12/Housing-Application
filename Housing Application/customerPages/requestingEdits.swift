@@ -126,7 +126,7 @@ struct requestingEdits: View {
 
 struct requestingEdits_Previews: PreviewProvider {
     static var previews: some View {
-        let house = House( title: "Order",houseNumber: "houseNumber",flatNumber: "flatNumber",streetName: "streetName",city: "city",postCode: "postcode",editInfo: "editInfo")
+        let house = House( title: "Order",houseNumber: "houseNumber",flatNumber: "flatNumber",streetName: "streetName",city: "city",postCode: "postcode",editInfo: "editInfo",price: "", UserGender: "")
         let houseViewModel = HouseViewModel(house: house)
         return requestingEdits(viewModel: houseViewModel, mode: .edit)
     }

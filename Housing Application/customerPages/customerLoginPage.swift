@@ -5,7 +5,7 @@
 //  Created by James Liddle on 21/06/2022.
 //
 
-
+//what the user sees after logining
 
 import SwiftUI
 import Firebase
@@ -19,17 +19,18 @@ struct customerLoginPage: View {
         NavigationView {
             TabView {
                        
-              
-               customerViewHouses()
-                                  .tabItem {
-                                      Label("View Properties", systemImage: "iphone.rear.camera")
-                                  }
-                 
-               
-              
+                FeedView(posts: PostModelArray(shuffled: false) ,  title: "View Properties")
+                
+                    .tabItem {
+                        Label("View Properties", systemImage: "house")
+                    }
                 
                 
                 
+                   Contact()
+                                    .tabItem {
+                                        Label("Contact us", systemImage: "gear")
+                                    }
                 
             
                      }

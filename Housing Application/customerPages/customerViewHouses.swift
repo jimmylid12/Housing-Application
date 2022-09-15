@@ -5,6 +5,8 @@
 //  Created by James Liddle on 21/06/2022.
 //
 
+//where all the houses are be able to be views
+
 import SwiftUI
 
 struct customerViewHouses: View {
@@ -19,36 +21,53 @@ struct customerViewHouses: View {
       VStack(alignment: .leading) {
         
   
-          Text("House Number ")
-            .font(.headline)
-          
-                  Text(house.houseNumber)
-          .font(.subheadline)
-          
-        
-          Text("flat Number ")
-            .font(.headline)
-          
-        Text(house.flatNumber)
-          .font(.subheadline)
-      }
-        Spacer()
-        VStack(alignment: .leading){
+          VStack(alignment: .leading) {
             
-            Text("City ")
-              .font(.headline)
-
-
-            Text(house.city)
-            
+           
+              Image("Logo")
+                         .resizable()
+                         .scaledToFit()
+                          .frame(width: 300.0, height: 200.0)
+              HStack{
+              
+              Text("House ")
+                .font(.headline)
+              
+              Text(house.title)
               .font(.subheadline)
+                  
+                  
+                  Text(house.editInfo)
+                  .font(.subheadline)
+                  .foregroundColor(.green)
+                  
+                  
+              }
+              HStack{
+                  
+                  
+                  Text(house.streetName)
+                  .font(.subheadline)
+                  
+                  Spacer()
+                  
+                  Text(house.postCode)
+                  .font(.subheadline)
+                  
+                  
+              }
+             
             
-            Text("PostCode ")
-              .font(.headline)
-            
-            Text(house.postCode)
-          .font(.subheadline)
-            
+                
+                        
+
+                
+                
+                
+                
+                
+                
+        }
       
          
         

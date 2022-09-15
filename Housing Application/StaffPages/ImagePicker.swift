@@ -1,93 +1,87 @@
 //
-//  ImagePicker.swift
+//  imagePicker.swift
 //  Housing Application
 //
-//  Created by James Liddle on 21/06/2022.
+//  Created by James Liddle on 05/07/2022.
 //
+//this handles the image that is picked and uploaded to firebase
 
-//
-//  ImagePicker.swift
-//  SocialNetwork
-//
-//  Created by Adnan Afzal on 30/10/2020.
-//  Copyright © 2020 Adnan Afzal. All rights reserved.
-//
-
-import Foundation
 import SwiftUI
+import FirebaseStorage
+import Combine
 
-extension View {
-    public func asUIImage() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        
-        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1, height: 1)
-        UIApplication.shared.windows.first!.rootViewController?.view.addSubview(controller.view)
-        
-        let size = controller.sizeThatFits(in: UIScreen.main.bounds.size)
-        controller.view.bounds = CGRect(origin: .zero, size: size)
-        controller.view.sizeToFit()
-        
-        // here is the call to the function that converts UIView to UIImage: `.asImage()`
-        let image = controller.view.asUIImage()
-        controller.view.removeFromSuperview()
-        return image
+struct imagePicker: UIViewControllerRepresentable {
+    
+    @Binding var shown: Bool
+    @Binding var imageURLList:[String]
+    @State var imageFileName:String = ""
+    
+    func makeCoordinator() -> imagePicker.Coordinator {
+        return imagePicker.Coordinator(parent: self)
     }
-}
-
-extension UIView {
-// This is the function to convert UIView to UIImage
-    public func asUIImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
+    
+    class Coordinator: NSObject,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+        var parent: imagePicker
+        let storage = Storage.storage().reference()
+        init(parent: imagePicker) {
+            self.parent = parent
         }
-    }
-}
-
-struct ImagePicker: UIViewControllerRepresentable {
-
-    @Environment(\.presentationMode)
-    var presentationMode
-
-    @Binding var image: Image?
-
-    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-
-        @Binding var presentationMode: PresentationMode
-        @Binding var image: Image?
-
-        init(presentationMode: Binding<PresentationMode>, image: Binding<Image?>) {
-            _presentationMode = presentationMode
-            _image = image
-        }
-
-        func imagePickerController(_ picker: UIImagePickerController,
-                                   didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            let uiImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-            image = Image(uiImage: uiImage)
-            presentationMode.dismiss()
-
-        }
-
+        
         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            presentationMode.dismiss()
+            parent.shown.toggle()
         }
-
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            let image = info[.originalImage] as! UIImage
+            parent.imageFileName = makeImageFileName()
+            uploadImageToFireBase(image: image)
+        }
+        
+        func uploadImageToFireBase(image: UIImage) {
+            // Create the file metadata
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            // Upload the file to the path FILE_NAME
+            storage.child(parent.imageFileName).putData(image.jpegData(compressionQuality: 0.42)!, metadata: metadata) { (metadata, error) in
+                guard let metadata = metadata else {
+                  // Uh-oh, an error occurred!
+                  print((error?.localizedDescription)!)
+                  return
+                }
+                // Metadata contains file metadata such as size, content-type.
+                let size = metadata.size
+                
+                
+                self.loadImageFromFirebase(imagePath: self.parent.imageFileName)
+                print("Upload size is \(size)")
+                print("Upload success")
+                self.parent.shown.toggle()
+            }
+        }
+        
+        func loadImageFromFirebase(imagePath: String) {
+            let storage = Storage.storage().reference(withPath: imagePath)
+            storage.downloadURL { (url, error) in
+                if error != nil {
+                    print((error?.localizedDescription)!)
+                    return
+                }
+                print("Download success")
+                let urlString = "\(url!)"
+                self.parent.imageURLList.append(urlString)
+            }
+        }
+        
     }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(presentationMode: presentationMode, image: $image)
+    
+    func makeUIViewController(context: UIViewControllerRepresentableContext<imagePicker>) -> UIImagePickerController {
+        let imagepic = UIImagePickerController()
+        imagepic.sourceType = .photoLibrary
+        imagepic.delegate = context.coordinator
+        return imagepic
     }
-
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
-        let picker = UIImagePickerController()
-        picker.delegate = context.coordinator
-        return picker
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<imagePicker>) {
     }
-
-    func updateUIViewController(_ uiViewController: UIImagePickerController,
-                                context: UIViewControllerRepresentableContext<ImagePicker>) {
-
-    }
-
 }

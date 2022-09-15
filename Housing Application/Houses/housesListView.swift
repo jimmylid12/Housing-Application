@@ -17,7 +17,7 @@ struct housesListView: View {
     @State private var showButton = false
     @StateObject var viewModel = HousesViewModel()
     @State var presentAddOrderSheet = false
-
+  
   private var addButton: some View {
     Button(action: { self.presentAddOrderSheet.toggle() }) {
       Image(systemName: "plus")
@@ -26,7 +26,6 @@ struct housesListView: View {
     }
   }
     
-  
   private func houseRowView(house: House) -> some View {
     
     NavigationLink(destination: HouseDetailsView(house: house)) {
@@ -34,51 +33,40 @@ struct housesListView: View {
         
        
           
-      
-          Text("House Number ")
-            .font(.headline)
-          
-             Text(house.houseNumber)
-          .font(.subheadline)
-          
-        
-          Text(" flat Number ")
-            .font(.headline)
-          
-        Text(house.flatNumber)
-          .font(.subheadline)
-      }
-        Spacer()
-        VStack(alignment: .leading){
+          VStack(alignment: .leading) {
             
-            Text("City ")
-              .font(.headline)
-
-
-            Text(house.city)
-            
+           
+              Image("Logo")
+                         .resizable()
+                         .scaledToFit()
+                          .frame(width: 300.0, height: 200.0)
+              
+              
+              Text("House ")
+                .font(.headline)
+              
+              Text(house.title)
               .font(.subheadline)
-            
-            Text("PostCode ")
-              .font(.headline)
-            Text(house.postCode)
-          .font(.subheadline)
-            
-            Text("editInfo ")
-              .font(.headline)
-            Text(house.editInfo)
-          .font(.subheadline)
-         
-        
-            
-                    
+              
+              HStack{
+                  
+                  
+                  Text(house.streetName)
+                  .font(.subheadline)
+                  
+                  Spacer()
+                  
+                  Text(house.postCode)
+                  .font(.subheadline)
+                  
+             
+                  Text(house.UserGender)
+                  .font(.subheadline)
+              }
 
-            
-            
-            
-            
-            
-            
+                
+        }
+    
     }
       
     }

@@ -15,13 +15,16 @@ struct House: Identifiable, Codable {
   @DocumentID var id: String?
     var title: String
     var houseNumber: String
-    var  flatNumber: String
+    var flatNumber: String
     var streetName: String
     var city: String
     var postCode: String
     var editInfo: String
+    var price: String
+    var UserGender : String
     
-    enum CodingKeys: String, CodingKey {
+    
+    enum CodingKeys: String, CodingKey{
       case id
       case title
       case houseNumber
@@ -30,6 +33,9 @@ struct House: Identifiable, Codable {
       case city
       case postCode
       case editInfo
+      case price
+      case UserGender
+        
   
     }
     

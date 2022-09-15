@@ -24,7 +24,7 @@ struct customerLogin: View {
     var body: some View {
         VStack(spacing: 15) {
             LogoView()
-            Spacer()
+          
             Text("Customer Login")
             SignInCredentialFieldss(email: $email, password: $password)
             Button(action: {
@@ -33,7 +33,9 @@ struct customerLogin: View {
                 Text("Log In")
                     .bold()
                     .frame(width: 360, height: 50)
-                    .background(.thinMaterial)
+                    .background(Color.orange)
+                
+                   
                     .cornerRadius(10)
             }
                 .disabled(!signInProcessing && !email.isEmpty && !password.isEmpty ? false : true)
@@ -102,13 +104,21 @@ struct SignInCredentialFieldss: View {
             TextField("Email", text: $email)
                 .padding()
                 .background(.thinMaterial)
+                .background(Color.orange)
                 .cornerRadius(10)
                 .textInputAutocapitalization(.never)
             SecureField("Password", text: $password)
                 .padding()
                 .background(.thinMaterial)
+                .background(Color.orange)
                 .cornerRadius(10)
                 .padding(.bottom, 30)
         }
     }
 }
+
+
+
+
+          
+        

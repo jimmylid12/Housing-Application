@@ -31,6 +31,11 @@ struct houseListView: View {
     @State var presentActionSheet = false
     
     
+  
+    
+    
+    
+    
     
     @ObservedObject var viewModel = HouseViewModel()
     var mode: Mode = .new
@@ -76,14 +81,39 @@ struct houseListView: View {
                         
                       
                         TextField("houseNumber", text: $viewModel.house.houseNumber)
-                        TextField("flat", text: $viewModel.house.flatNumber)
+                        TextField("flat/house", text: $viewModel.house.flatNumber)
                         TextField("streetname", text: $viewModel.house.streetName)
                         TextField("city", text: $viewModel.house.city)
                         TextField("postcode", text: $viewModel.house.postCode)
                         TextField("edit", text: $viewModel.house.editInfo)
+                        TextField("price", text: $viewModel.house.price)
+                        
+                        VStack{
+                                         Text("Select Your Property type")
+                                             
+                                             .foregroundColor(.orange)
+                                             .bold()
+                                             .shadow(color: .gray, radius: 1, x: 1.6, y: 1.6)
+                                             .offset(x: 0, y: 60)
+                            Picker(selection: $viewModel.house.UserGender, label: Text("Property Type")
+                                             .foregroundColor(Color.blue)
+                                         ){
+                                             Text("House").tag("House")
+                                             Text("Flat").tag("Flat")
+                                             
+                                         }.labelsHidden()
+                                     }
+                     
+                                       
+                                       
+                        
                         
                         
                     }
+                    
+                    
+                    
+                    
                     
                     
                     if mode == .edit {
@@ -148,7 +178,7 @@ struct houseListView: View {
 
 struct houseListView_Previews: PreviewProvider {
     static var previews: some View {
-        let house = House( title: "Order",houseNumber: "houseNumber",flatNumber: "flatNumber",streetName: "streetName",city: "city",postCode: "postcode",editInfo: "editInfo")
+        let house = House( title: "Order",houseNumber: "houseNumber",flatNumber: "flatNumber",streetName: "streetName",city: "city",postCode: "postcode",editInfo: "editInfo",price: "price", UserGender: "")
         let houseViewModel = HouseViewModel(house: house)
         return houseListView(viewModel: houseViewModel, mode: .edit)
     }

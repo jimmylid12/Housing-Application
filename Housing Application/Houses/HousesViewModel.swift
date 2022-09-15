@@ -11,6 +11,8 @@ import Combine
 import FirebaseFirestore
 
 class HousesViewModel: ObservableObject {
+    
+    
     @Published var houses = [House]()
     
     private var db = Firestore.firestore()

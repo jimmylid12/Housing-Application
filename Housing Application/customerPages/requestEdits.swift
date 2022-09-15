@@ -27,15 +27,164 @@ struct requestEdits: View {
     }
 
     var body: some View {
+      
+        Text("Property Details")
+            .font(.headline)
+            .font(.system(size: 16, weight: .regular))
         
-    VStack(){
-        Text("Request Changes to be approved")
         
+            Image("Logo")
+                       .resizable()
+                       
+                        .frame(width: 350.0, height: 200.0)
+                    
+            HStack{
+           
+            Text(house.price)
+                    .font(.system(size: 40))
+            .font(.headline)
+            
+            .padding()
+                Spacer()
+                
+                Image(systemName: "heart")
+                .symbolRenderingMode(.monochrome)
+                .foregroundColor(Color.red)
+                .font(.system(size: 16, weight: .regular))
+                
+                .padding()
+            
+            }
+            
+         
+            
+            HStack{
+                
+              
+                Text(house.streetName)
+                    .font(.headline)
+                .padding()
+               
+              
+                
+                Text(house.postCode)
+                    .font(.headline)
+                .padding()
+                
+                Spacer()
+            }
+           
+
+         
+              
+                      
+            VStack(alignment: .leading)
+            {
+                Divider()
+                HStack{
+                 
+                    Image(systemName: "house.circle")
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundColor(Color.accentColor)
+                    .font(.system(size: 20, weight: .regular))
+                    
+                    .padding(.bottom, 50)
+                    
+                    .padding()
+                    
+       
+                    
+                  
+                Text("Property type")
+                .font(.headline)
+                .padding(.bottom, 50)
+                    
+                    Text(house.flatNumber)
+                .font(.subheadline)
+                    
+                .padding(.bottom, 50)
+
+                  Spacer()
+                    Image(systemName: "bed.double")
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundColor(Color.accentColor)
+                    .font(.system(size: 16, weight: .regular))
+                    
+                    .padding(.bottom, 50)
+                    
+                Text("City     ")
+                .font(.headline)
+                .padding(.bottom, 50)
+                    Text(house.city)
+                .font(.subheadline)
+                .padding(.bottom, 50)
+                .padding()
+                    
+        }
+                
+              
+                 
+            }
+        
+                
+            VStack(alignment: .leading)
+            {
+                HStack{
+                    
+                    Image(systemName: "sterlingsign.circle.fill")
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundColor(Color.accentColor)
+                    .font(.system(size: 16, weight: .regular))
+                    .padding(.bottom, 50)
+                    .padding()
+                    
+                    
+                    Text("Price")
+                .font(.headline)
+                .padding(.bottom, 50)
+                    
+               
+                    
+                    Text(house.flatNumber)
+                .font(.subheadline)
+                .padding(.bottom, 50)
+                    
+                    Spacer()
+                
+                    Image(systemName: "sterlingsign.circle.fill")
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundColor(Color.accentColor)
+                    .font(.system(size: 16, weight: .regular))
+                    .padding(.bottom, 50)
+                    
+                    
+                   
+                    
+                Text("Bedrooms")
+                .font(.headline)
+                .padding(.bottom, 50)
+                    Text(house.price)
+                .font(.subheadline)
+                    
+                .padding(.bottom, 50)
+                .padding()
+            
+        }
+              
+                
+                Divider()
+                
+            }
+   
+         
+
+            Spacer()
+      
             .navigationBarItems(trailing: editButton {
                 self.presentEditOrderSheet.toggle()
             })
         
-        
+     
       
         
             .onAppear() {
@@ -52,16 +201,17 @@ struct requestEdits: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea(.top)
+    
+     //   .edgesIgnoringSafeArea(.top)
         
-        .navigationViewStyle(StackNavigationViewStyle())
+//        .navigationViewStyle(StackNavigationViewStyle())
     }
 
-}
+
 
 struct requestEdits_Previews: PreviewProvider {
     static var previews: some View {
-        let house = House(id: "",title: "",houseNumber: "",flatNumber: "",streetName: "",city: "",postCode:"",editInfo: "")
+        let house = House(id: "",title: "",houseNumber: "",flatNumber: "",streetName: "",city: "",postCode:"",editInfo: "",price: "", UserGender: "")
         return
             NavigationView {
                requestEdits(house: house)

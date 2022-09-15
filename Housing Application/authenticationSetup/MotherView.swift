@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MotherView: View {
-    
+
     @EnvironmentObject var viewRouter: ViewRouter
-    
+ 
     var body: some View {
         switch viewRouter.currentPage {
         case .signUpPage:
@@ -18,7 +18,9 @@ struct MotherView: View {
         case .signInPage:
             staffLogin()
         case .homePage:
-            HomeView()
+            TabBarView()
+            
+       
         case .inital:
             InitialPage()
         case .customerHomePage:
@@ -26,6 +28,8 @@ struct MotherView: View {
             
         case .houselist:
             housesListView()
+            
+   
             
         }
     }

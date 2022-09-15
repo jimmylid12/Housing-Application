@@ -10,6 +10,8 @@
 import Foundation
 import Combine
 import FirebaseFirestore
+
+
 class HouseViewModel: ObservableObject  {
     
     @Published var house: House
@@ -19,7 +21,7 @@ class HouseViewModel: ObservableObject  {
     
     // MARK: - Constructors
     
-    init(house: House = House(title: "",houseNumber: "",flatNumber: "",streetName: "",city: "",postCode: "", editInfo: "")) {
+    init(house: House = House(title: "",houseNumber: "",flatNumber: "",streetName: "",city: "",postCode: "", editInfo: "", price:"",UserGender: "")) {
           
           
         
