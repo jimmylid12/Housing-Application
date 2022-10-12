@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B106FF228F74CFE00BA7B6B /* FirebaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B106FF128F74CFE00BA7B6B /* FirebaseImageView.swift */; };
 		2B15BE402874E506000BD57C /* imagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B15BE3F2874E506000BD57C /* imagePicker.swift */; };
 		2B1FB966285F2E4D00C8E2D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B1FB965285F2E4D00C8E2D2 /* Assets.xcassets */; };
 		2B1FB969285F2E4D00C8E2D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B1FB968285F2E4D00C8E2D2 /* Preview Assets.xcassets */; };
@@ -61,10 +62,10 @@
 		2BDEEAFD287CD0A5009E92AA /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDEEAFC287CD0A5009E92AA /* PostView.swift */; };
 		2BDEEAFF287CD0DD009E92AA /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDEEAFE287CD0DD009E92AA /* LazyView.swift */; };
 		2BEB400B28F4AB500022F75F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEB400A28F4AB500022F75F /* ImagePicker.swift */; };
-		2BEB400F28F4ABF20022F75F /* FirebaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEB400E28F4ABF20022F75F /* FirebaseImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B106FF128F74CFE00BA7B6B /* FirebaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseImageView.swift; sourceTree = "<group>"; };
 		2B15BE3F2874E506000BD57C /* imagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePicker.swift; sourceTree = "<group>"; };
 		2B1FB95E285F2E4800C8E2D2 /* Housing Application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Housing Application.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1FB965285F2E4D00C8E2D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -111,7 +112,6 @@
 		2BDEEAFC287CD0A5009E92AA /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2BDEEAFE287CD0DD009E92AA /* LazyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		2BEB400A28F4AB500022F75F /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImagePicker.swift; path = "../../../../Desktop/xcode stuff/GramGan-main/social media/Views/SubViews/ImagePicker.swift"; sourceTree = "<group>"; };
-		2BEB400E28F4ABF20022F75F /* FirebaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseImageView.swift; path = "../../../../../../Volumes/NO NAME/untitled folder 2/Housing Application/Housing Application/StaffPages/FirebaseImageView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +213,7 @@
 				2BDEEAF8287CD05C009E92AA /* FeedView.swift */,
 				2BDEEAEA287CC66C009E92AA /* PostImageView.swift */,
 				2BDEEAF6287CCED0009E92AA /* PostModel.swift */,
-				2BEB400E28F4ABF20022F75F /* FirebaseImageView.swift */,
+				2B106FF128F74CFE00BA7B6B /* FirebaseImageView.swift */,
 				2B1FB98B285F3A7800C8E2D2 /* TabBarView.swift */,
 				2B6AA07628995887006AA08C /* PropertyDetailsPage.swift */,
 				2BC3564628AAE6A300EED967 /* testPage.swift */,
@@ -373,7 +373,7 @@
 				2B6AA07728995887006AA08C /* PropertyDetailsPage.swift in Sources */,
 				2BC3564B28ABEA7500EED967 /* AgentModel.swift in Sources */,
 				2B1FB972285F353700C8E2D2 /* customerLogin.swift in Sources */,
-				2BEB400F28F4ABF20022F75F /* FirebaseImageView.swift in Sources */,
+				2B106FF228F74CFE00BA7B6B /* FirebaseImageView.swift in Sources */,
 				2B1FB98C285F3A7800C8E2D2 /* TabBarView.swift in Sources */,
 				2B625B6428AD94960069B3A7 /* searchBarPage.swift in Sources */,
 				2BDEEAFF287CD0DD009E92AA /* LazyView.swift in Sources */,

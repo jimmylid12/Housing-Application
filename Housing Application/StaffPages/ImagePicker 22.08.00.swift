@@ -1,28 +1,29 @@
 //
-//  imagepickerrr.swift
+//  imagePicker.swift
 //  Housing Application
 //
 //  Created by James Liddle on 05/07/2022.
 //
+//this handles the image that is picked and uploaded to firebase
 
 import SwiftUI
 import FirebaseStorage
 import Combine
 
-struct imagepickerrr: UIViewControllerRepresentable {
+struct imagePicker: UIViewControllerRepresentable {
     
     @Binding var shown: Bool
     @Binding var imageURLList:[String]
     @State var imageFileName:String = ""
     
-    func makeCoordinator() -> imagepickerrr.Coordinator {
-        return imagepickerrr.Coordinator(parent: self)
+    func makeCoordinator() -> imagePicker.Coordinator {
+        return imagePicker.Coordinator(parent: self)
     }
     
     class Coordinator: NSObject,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-        var parent: imagepickerrr
+        var parent: imagePicker
         let storage = Storage.storage().reference()
-        init(parent: imagepickerrr) {
+        init(parent: imagePicker) {
             self.parent = parent
         }
         
@@ -74,13 +75,13 @@ struct imagepickerrr: UIViewControllerRepresentable {
         
     }
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<imagepickerrr>) -> UIImagePickerController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<imagePicker>) -> UIImagePickerController {
         let imagepic = UIImagePickerController()
         imagepic.sourceType = .photoLibrary
         imagepic.delegate = context.coordinator
         return imagepic
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<imagepickerrr>) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<imagePicker>) {
     }
 }
