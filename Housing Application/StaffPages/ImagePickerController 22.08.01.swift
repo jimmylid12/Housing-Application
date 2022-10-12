@@ -1,10 +1,6 @@
 //
 //  ImagePickerController.swift
-//  Firebase_Storage_Test
-//
-//  Created by YOUNGSIC KIM on 2020-01-30.
-//  Copyright © 2020 YOUNGSIC KIM. All rights reserved.
-//
+
 
 import SwiftUI
 import FirebaseStorage
